@@ -36,9 +36,59 @@ states = ['washington','oregon','california']
 #adds an additional item to the list. 
 states.append('idaho')
 
-#changes the value for second index place.
+#changes the value for second index place. Index can also be negative as well.
 states[2] = 'montana'
+print(states)
+#last position of string
+states[-1] = 'kentucky'
 
 #can also extend the list by adding an addtional list
 states.extend(['utah','delaware','rhode island'])
 print(states)
+
+#nested lists are lists ofs lists
+
+list1 = ['Joe','bob','tim']
+list2 = ['jane','jill','jackie']
+
+#lists owns values within list 1 and 2. Two sets of brackets. 
+lists = [list1,list2]
+
+
+
+#excercise two: bill roulette. With a list of names select one person at random to pay the bill.  
+
+#establishing a list of names
+names = ['bob','joe','jill','jane','tim']
+
+#generating a random number from position 0 (bob) to one less than than the total maximum count (because 0 counts as a digit)
+number = random.randint(0,len(names)-1)
+
+#passing two variables at the same time. First is the name at the index of number. Not matter how long the list is it will pull the name for that position. 
+print(f"{names[number]} is going to buy the meal today!")
+
+#excercise 3
+#creating the intital playing board 
+#assuming that players won't pick a position out of 1-3 columns and rows.
+
+#three seperate lists
+row1 = ["","",""]
+row2 = ["","",""]
+row3 = ["","",""]
+
+#list of lists are stored to map variable
+map = [row1, row2, row3]
+
+#position is typically provided as an input but this is convenient. 
+position = '23'
+
+#two variables 1. stores column value, 2. stores row value. This is gained by indexing the position string, converting it to an int and subtracting one to establish
+#python appropriate index position. failure test here would involve looking for values where x > 3 and x < 0 
+column = (int(position[0]))-1
+row = (int(position[1]))-1
+
+#calls the list of list by finding the row first(the appropriate list). Then finding the column (the index wtihin that row.))
+map[row][column]='x'
+
+#prints an f string making the board more realistic. 
+print(f'{row1}\n{row2}\n{row3}')
