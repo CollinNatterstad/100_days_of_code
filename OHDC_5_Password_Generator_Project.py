@@ -16,19 +16,21 @@ password_characters = []
 
 # selecting upper case
 for number in range(1,(num_upper+1)):
+    #appending characters to list. 
     password_characters.append(random.choice(upper))
 #selecting lower case
 for number in range(1,num_lower+1):
     password_characters.append(random.choice(lower))
-#selecting 
+#selecting symbols
 for number in range(1,num_symbols+1):
     password_characters.append(random.choice(symbols))
-
+#selecting numbers 
 for number in range(1,num_numbers+1):
     password_characters.append(random.choice(numbers)) 
 
 password = ''
 
+#creating a random order for characters in the list. 
 for item in password_characters:
     password += random.choice(item)
     
