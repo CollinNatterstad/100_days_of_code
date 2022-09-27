@@ -72,3 +72,42 @@ new_dict = {
      }
 }
 
+#creating a list of dictionaries
+#lists are searched by index.
+#dictionaries are searched by key.  
+
+dict_list = []
+#appending because it is convenient. 
+dict_list.append(new_dict)
+dict_list.append(student_grades)
+
+
+print(dict_list)
+
+#excercise 2
+#add a new country dictionary to the current travel log utilizing a function called add_new_country. 
+
+travel_log = [
+{
+  "country": "France",
+  "visits": 12,
+  "cities": ["Paris", "Lille", "Dijon"]
+},
+{
+  "country": "Germany",
+  "visits": 5,
+  "cities": ["Berlin", "Hamburg", "Stuttgart"]
+},
+]
+
+def add_new_country(country, times_visited, cities):
+    new_country = {
+        "country": country,
+        "visits": times_visited,
+        "cities": cities
+    }
+
+    travel_log.append(new_country)
+
+add_new_country("Russia", 2, ["Moscow", "Saint Petersburg"])
+print(travel_log)
