@@ -25,6 +25,7 @@ while should_continue:
  
     if continue_bidding == 'no':
         should_continue = False
+        
 clear()
 winner = max(bidders,key = bidders.get)
 value = bidders[winner]
