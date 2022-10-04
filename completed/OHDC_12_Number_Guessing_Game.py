@@ -4,7 +4,7 @@ affirm = ['y','yes','yeah','yep']
 deny = ['n','no','nah','nope']
 
 def intro():
-    print("Welcome to the Number Guessing Game!\nI'm thinking of a number between 1 and 100.")
+    print("Welcome to the Number Guessing Game!\n\nI'm thinking of a number between 1 and 100.")
     difficulty = input("Please choose a difficulty. Type 'easy' or 'hard':\n").lower()
     return difficulty
 
@@ -28,10 +28,10 @@ def check_the_guess(number,guess):
         print("You've selected the correct number!")
         return True
     elif number > guess:
-        print("You're guess is to low.")
+        print("Your guess is too low.")
         return False
     elif number < guess:
-        print("You're guess is to high.")
+        print("Your guess is too high.")
         return False
 
 def carry_on():
