@@ -1,5 +1,5 @@
 import random
-from OHDC_11_art import logo
+from completed.OHDC_11_art import logo
 '''
 logo
 
