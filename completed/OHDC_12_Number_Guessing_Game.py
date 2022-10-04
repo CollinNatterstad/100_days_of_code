@@ -22,7 +22,7 @@ def select_number():
     number = random.randint(1,100)
     return number
 
-def check_guess(number,guess):
+def check_the_guess(number,guess):
 
     if number == guess:
         print("You've selected the correct number!")
@@ -49,12 +49,14 @@ def play_game():
     print(f"You have {chances} chances remaining!")
     number = select_number()
 
-    while chances > 0:
+    check_guess = False
+    while not check_guess and chances > 0:
         guess = int(input("Please enter a number from 1 to 100.\n"))
-        if check_guess(number,guess):
+        check_guess = check_the_guess(number,guess)
+        if check_guess:
             carry_on()
         
-        elif not check_guess(number,guess):
+        elif not check_guess:
             chances -= 1
         print(f"You have {chances} chances remaining.")
 
