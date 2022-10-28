@@ -37,12 +37,10 @@ class RaceCohort:
         while carry_on:
             for item in self.turtle:
                 if self.there_is_winner(item.x_cord):
-                    
                     item.winner = True
                     carry_on = False
                     break                    
                     
-
                 else:
                     movement = random.randint(10,50)                   
                     item.turtle.forward(movement)
@@ -68,11 +66,6 @@ race = RaceCohort()
 race.race()
 
 winner = race.compare_bet_winner(bet=bet)  
-
-    
-#start point is x = -250 y is variable
-#y will be 400/ total number of turtles. 
-
 
 screen.exitonclick()
 
