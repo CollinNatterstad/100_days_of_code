@@ -8,8 +8,8 @@ up = 90
 down = 270
 left = 180
 right = 0
-#typically classes are hosted in other files, they're kept in this file simply for convenience.
 
+#typically classes are hosted in other files, they're kept in this file simply for convenience.
 class Food:
     def __init__(self) -> None:
         self.body = t.Turtle()
