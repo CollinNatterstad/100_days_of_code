@@ -10,19 +10,21 @@ left = 180
 right = 0
 #typically classes are hosted in other files, they're kept in this file simply for convenience.
 
-class Food:
-    def __init__(self) -> None:
-        self.body = t.Turtle()
-        self.body.penup()
-        self.body.shape('circle')
-        self.body.color('pink')
-        self.body.shapesize(.5)
+class Food(t.Turtle):
+    def __init__(self):
+        super().__init__()
+        self.penup()
+        self.shapesize(.5)
+        self.speed(0)
+        self.color('pink')
+        self.shape('circle')
+        self.refresh()
+    
+    def refresh(self):
+        rand_x = random.randint(-270,270)
+        rand_y = random.randint(-270,270)
 
-    def place_random_food(self):
-        self.foodx_cord = random.randint(-270,270)
-        self.foody_cord = random.randint(-270,270)      
-        self.foodposition = self.body.goto(self.foodx_cord,self.foody_cord)
-        return self.body.pos()
+        self.goto(rand_x,rand_y)
 
 #creates single unit of snake chain. 
 class SnakeSection: 
@@ -39,6 +41,7 @@ class Snake:
         self.segments = []
         self.create_snek()
         self.head = self.segments[0]
+        self.tail = self.segments[-1]
 
     def create_snek(self):
         for item in starting_position:
@@ -74,10 +77,11 @@ class Snake:
             self.head.section.setheading(180)
 
     def add_section(self):
-        pass
-
+        new_segment = SnakeSection()
+        new_segment.section.goto(self.tail.section.pos())
+        self.segments.append(new_segment)
+        self.tail = self.segments[-1]
 class Game:
-
     def __init__(self) -> None:
         pass
 
@@ -91,6 +95,7 @@ screen.title("My Snake Game")
 screen.tracer()
 
 snake = Snake()
+food = Food()
 
 screen.listen()
 screen.onkey(snake.snek_up, 'w')
@@ -101,10 +106,12 @@ screen.onkey(snake.snek_right,'d')
 game_on = True
 
 while game_on:
-    
+
     screen.update()
-    time.sleep(.01)
-    
     snake.move_snek()
     
+    if snake.head.section.distance(food.pos()) <= 15:
+        food.refresh()
+        snake.add_section()
+
 screen.exitonclick()
