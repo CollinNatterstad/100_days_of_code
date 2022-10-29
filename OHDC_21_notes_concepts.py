@@ -24,7 +24,8 @@ class Fish(Animal):
         super().__init__()
 
 #we can even change the super'd function within the second class. 
-#when this condition is called it can then be modified to perform specific tasks within this class. 
+#when this condition is called it can then be modified to perform specific tasks within this class.
+#this is great when you need to make alterations but don't want to change the method itself. 
     def breath(self):
         super().breathe()
         print("doing this underwater")
