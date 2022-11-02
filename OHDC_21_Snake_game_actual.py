@@ -34,12 +34,14 @@ class SnakeSection:
         self.section.shape('square')
         self.section.color('white')
         self.section.penup()
+        self.food = 0
         
 class Snake:
     
     def __init__(self):
         self.segments = []
         self.create_snek()
+        
         self.head = self.segments[0]
         self.tail = self.segments[-1]
 
@@ -79,12 +81,19 @@ class Snake:
     def add_section(self):
         new_segment = SnakeSection()
         new_segment.section.goto(self.tail.section.pos())
-        self.segments.append(new_segment)
-        self.tail = self.segments[-1]
+        self.segments.section.food += 1
+        # self.segments.append(new_segment)
+        # self.tail = self.segments[-1]
 class Game:
     def __init__(self) -> None:
-        pass
+        self.game = t.Turtle()
+        self.score = 0
+        self.game.write(self.score)
 
+    def write_score(self):
+        self.game.goto(x=300,y=0)
+        self.sco_var = f'Score: {self.score}'
+        self.game.write(self.sco_var)
 
 #the game itself.
 
@@ -96,6 +105,7 @@ screen.tracer()
 
 snake = Snake()
 food = Food()
+game = Game()
 
 screen.listen()
 screen.onkey(snake.snek_up, 'w')
@@ -106,12 +116,13 @@ screen.onkey(snake.snek_right,'d')
 game_on = True
 
 while game_on:
-
+    
     screen.update()
     snake.move_snek()
     
     if snake.head.section.distance(food.pos()) <= 15:
         food.refresh()
-        snake.add_section()
+        game.update_score()
+        #snake.add_section()
 
 screen.exitonclick()
