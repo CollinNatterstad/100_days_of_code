@@ -94,6 +94,7 @@ class Scoreboard(t.Turtle):
         self.setposition(x=0,y=270)
         self.hideturtle()
         self.update_score()
+    
     def update_score(self):
         self.write(f'Score: {self.score}',align='center',font = ('Arial',20,'normal'))
     
@@ -131,7 +132,7 @@ while game_on:
     
     if snake.head.section.distance(food.pos()) <= 15:
         food.refresh()
-        scoreboard.
+        
         #snake.add_section()
 
 screen.exitonclick()
