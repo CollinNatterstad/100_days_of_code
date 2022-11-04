@@ -84,16 +84,25 @@ class Snake:
         self.segments.section.food += 1
         # self.segments.append(new_segment)
         # self.tail = self.segments[-1]
-class Game:
-    def __init__(self) -> None:
-        self.game = t.Turtle()
-        self.score = 0
-        self.game.write(self.score)
 
-    def write_score(self):
-        self.game.goto(x=300,y=0)
-        self.sco_var = f'Score: {self.score}'
-        self.game.write(self.sco_var)
+class Scoreboard(t.Turtle):
+    def __init__(self) -> None:
+        super().__init__()
+        self.color("white")
+        self.penup()
+        self.score = 0
+        self.setposition(x=0,y=270)
+        self.hideturtle()
+        self.update_score()
+    def update_score(self):
+        self.write(f'Score: {self.score}',align='center',font = ('Arial',20,'normal'))
+    
+
+    def increase_score(self):
+        self.score += 1
+        self.clear()
+        self.update_score()
+        
 
 #the game itself.
 
@@ -105,7 +114,7 @@ screen.tracer()
 
 snake = Snake()
 food = Food()
-game = Game()
+scoreboard = Scoreboard()
 
 screen.listen()
 screen.onkey(snake.snek_up, 'w')
@@ -122,7 +131,7 @@ while game_on:
     
     if snake.head.section.distance(food.pos()) <= 15:
         food.refresh()
-        game.update_score()
+        scoreboard.
         #snake.add_section()
 
 screen.exitonclick()
