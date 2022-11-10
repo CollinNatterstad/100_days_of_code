@@ -110,7 +110,7 @@ class Ball(t.Turtle):
         self.setheading(choice(ball_direction))
 
     def ball_motion(self):
-        self.forward(50)
+        self.forward(30)
 
 class Paddle():
     def __init__(self):
