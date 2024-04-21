@@ -2,7 +2,7 @@ import turtle as t
 import pandas as pd
 
 def game_loop(t = t.Turtle()):
-    df = pd.read_csv('D:\Coding Projects\\100 Days of Code\OHDC_25\\50_states.csv')
+    df = pd.read_csv('\OHDC_25\\50_states.csv')
     while True:
         if len(df.state) == 0:
             t.penup()
